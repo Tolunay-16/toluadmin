@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Internes Admin-Panel</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #fff;
+      font-family: "Courier New", monospace;
+      padding: 30px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    h1 {
+      color: #00ff00;
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input, button {
+      padding: 8px;
+      background-color: #222;
+      border: none;
+      border-radius: 4px;
+      color: #00ff00;
+      font-family: monospace;
+    }
+
+    button:hover {
+      background-color: #00bfff;
+      color: #fff;
+    }
+
+    #upload-section {
+      margin-top: 30px;
+    }
+
+    #back-btn {
+      margin-top: 40px;
+      animation: pulse 2s infinite;
+      background-color: #1e1e1e;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 5px #00ff00; }
+      50% { box-shadow: 0 0 20px #00ff00; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login-Bereich -->
+  <div id="login">
+    <h2>🔐 Login erforderlich</h2>
+    <label for="username">Benutzername:</label>
+    <input type="password" id="username" placeholder="Benutzer-ID">
+
+    <label for="password">Passwort:</label>
+    <input type="password" id="password" placeholder="********">
+
+    <button onclick="checkLogin()">Login</button>
+  </div>
+
+  <!-- Hauptinhalt -->
+  <div id="content" class="hidden">
+    <h1>> Willkommen zurück, Master-Tolu</h1>
+
+    <div id="upload-section">
+      <h2>📁 Lokaler Datei-Upload</h2>
+      <input type="file" id="fileInput" multiple />
+      <p style="color: #888;">(Diese Dateien werden nur lokal angezeigt und NICHT auf einen Server geladen)</p>
+
+      <ul id="fileList"></ul>
+    </div>
+
+    <!-- Zurück-Button -->
+    <button id="back-btn" onclick="goBack()">⬅ Zurück zur Hauptseite</button>
+  </div>
+
+  <!-- Soundeffekt -->
+  <audio id="clickSound" src="https://www.soundjay.com/button/sounds/button-3.mp3" preload="auto"></audio>
+
+  <script>
+    function checkLogin() {
+      const user = document.getElementById("username").value.trim().toLowerCase();
+      const pw = document.getElementById("password").value.trim();
+
+      if (user === "7500" && pw === "MiXz+A08") {
+        document.getElementById("login").classList.add("hidden");
+        document.getElementById("content").classList.remove("hidden");
+      } else {
+        alert("❌ Falsche Zugangsdaten!");
+      }
+    }
+
+    function goBack() {
+      const sound = document.getElementById("clickSound");
+      sound.play();
+      setTimeout(() => {
+        window.location.href = "index.html";
+      }, 800); // wartet kurz für Soundeffekt
+    }
+
+    // Datei-Upload anzeigen
+    document.getElementById('fileInput').addEventListener('change', function () {
+      const list = document.getElementById('fileList');
+      list.innerHTML = '';
+      for (const file of this.files) {
+        const li = document.createElement('li');
+        li.textContent = `📎 ${file.name} (${Math.round(file.size / 1024)} KB)`;
+        list.appendChild(li);
+      }
+    });
+  </script>
+
+</body>
+</html>

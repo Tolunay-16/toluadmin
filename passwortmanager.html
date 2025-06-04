@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Passwortmanager – Tolu</title>
+  <style>
+    body {
+      background-color: #000;
+      color: #00ff00;
+      font-family: "Courier New", monospace;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input[type="password"], button {
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 4px;
+      background-color: #111;
+      color: #00ff00;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #00bfff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    #passwords {
+      display: none;
+      margin-top: 30px;
+    }
+
+    code {
+      background-color: #111;
+      padding: 3px 6px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 30px;
+      color: #00bfff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔐 Tolu's Passwort-Manager</h1>
+
+  <p>Gib den 4-stelligen Sicherheitscode ein, um deine Zugangsdaten anzuzeigen:</p>
+
+  <input type="password" id="pinCode" placeholder="PIN eingeben" maxlength="4" autocomplete="off">
+  <br>
+  <button onclick="unlockPasswords()">Entsperren</button>
+
+  <div id="passwords">
+    <h2>🗝️ Gespeicherte Zugangsdaten</h2>
+    <ul>
+      <li>🖥️ Admin-Login: <code>admin2024!</code></li>
+      <li>📶 WLAN: <code>SecureNet-9876</code></li>
+      <li>🔐 Admin: <code>AG5hMZEf%y&c3&54</code></li>
+      <li>🧰 SQL - SA : <code>3696</code></li>
+      <li>🖥️ im: <code>J9hNPeHU</code></li>
+      <li>🖥️ lar: <code>r#MingHTer3</code></li>
+      <li>🖥️ tb: <code>urNe_NgM8</code></li>
+      <li>🖥️ mbu: <code>BaD0U_T3Dw</code></li>
+      <li>🖥️ canis: <code>Koro_cosu3</code></li>
+      <li>🖥️ ado: <code>cH1Ti-aLe</code></li>
+      <li>🖥️ wi: <code>22(:XU.#D6</code></li>
+      <li>🖥️ ja: <code>rowjj52</code></li>
+      <li>🖥️ jk: <code>1JKProd!</code></li>
+      <li>🖥️ inm: <code>Xugi_res0</code></li>
+      <li>🖥️ hm: <code>ni4nTiCKERs_</code></li>
+      <li>🖥️ hs: <code>9Se6ebu3</code></li>
+      <li>🖥️ dw: <code>7Wer2ner9!</code></li>
+      <li>🖥️ gso: <code>gsoGSO123</code></li>
+      <li>🖥️ cg: <code>W1L-cM9E</code></li>
+      
+    </ul>
+    <a href="index.html">⬅ Zurück zur Startseite</a>
+  </div>
+
+  <script>
+    function unlockPasswords() {
+      const pin = document.getElementById("pinCode").value;
+      const correctPin = "1616"; // << Hier deinen eigenen PIN setzen
+
+      if (pin === correctPin) {
+        document.getElementById("passwords").style.display = "block";
+      } else {
+        alert("❌ Falscher Sicherheitscode!");
+      }
+    }
+  </script>
+
+</body>
+</html>
